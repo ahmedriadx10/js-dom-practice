@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle and class Mastery</title>
+</head>
+
+<style>
+button{
+  padding: 10px 20px;
+  background-color: peru;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
+}
+
+</style>
+<body>
+
+
+
+  <button id="dark-mode">Dark Mode</button>
+
+
+  <script>
+  
+// ১. একটি বাটন থাকবে যার নাম "Dark Mode"।
+// ২. যখন এই বাটনে ক্লিক করবে, তখন তোমার পুরো body এর ব্যাকগ্রাউন্ড হবে কালো এবং লেখার রঙ হবে সাদা।
+// ৩. বাটনের নাম বদলে হয়ে যাবে "Light Mode"।
+// ৪. আবার ক্লিক করলে সব আগের মতো (সাদা ব্যাকগ্রাউন্ড, কালো লেখা) হয়ে যাবে এবং বাটনের নাম আবার "Dark Mode" হয়ে যাবে।
+
+
+const darkBtn=document.getElementById('dark-mode')
+const body=document.body
+darkBtn.addEventListener('click',function(event){
+
+
+body.classList.toggle('dark-theme')
+const x=body.classList.contains('dark-theme')
+
+if(x){
+  darkBtn.innerText='Light Mode'
+}
+
+  else{
+    darkBtn.innerText='Light Mode'
+  }
+
+
+
+})
+
+
+
+  </script>
+
+
+
+</body>
+</html>
