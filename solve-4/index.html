@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guessing Game</title>
+  </head>
+  <body>
+    <div class="guess-container">
+      <input type="number" name="" id="usr-num" />
+
+      <button id="check-btn">Check Result</button>
+
+      <p id="show-result"></p>
+    </div>
+
+    <!-- (The Guessing Game - Mini Logic) -->
+    <!-- টাস্ক:
+১. একটি ইনপুট বক্স থাকবে যেখানে ইউজার একটি সংখ্যা লিখবে (১ থেকে ১০ এর মধ্যে)।
+২. একটি বাটন থাকবে "Check Result"।
+৩. জাভাস্ক্রিপ্টে তুমি একটি লাকি নাম্বার সেভ করে রাখবে (ধরো const luckyNumber = 7;)।
+৪. বাটনে ক্লিক করলে নিচের একটি প্যারাগ্রাফে ৩টি রেজাল্ট আসতে পারে:
+- যদি ইনপুট লাকি নাম্বারের সমান হয়: "অভিনন্দন! আপনি জিতেছেন!" (লেখার রঙ সবুজ হবে)
+- যদি ইনপুট লাকি নাম্বারের চেয়ে বড় হয়: "অনেক বেশি হয়ে গেছে!" (লেখার রঙ লাল হবে)
+- যদি ইনপুট লাকি নাম্বারের চেয়ে ছোট হয়: "আরও বড় সংখ্যা ভাবুন!" (লেখার রঙ লাল হবে)
+
+বোনাস: ইনপুট যেন খালি করার টেকনিকটা এখানেও থাকে। -->
+
+    <script>
+      const usrNumberInput = document.getElementById("usr-num");
+
+      const checkButton = document.getElementById("check-btn");
+      const resultPara = document.getElementById("show-result");
+
+      const ourLuckyNumber = 5;
+
+      checkButton.addEventListener("click", function () {
+        const usrNumber = Number(usrNumberInput.value);
+        if (usrNumber > 0 && usrNumber <= 10) {
+          if (usrNumber > ourLuckyNumber) {
+            resultPara.innerText =
+              "Sorry entered number is over than lucky number";
+            resultPara.style.color = "red";
+          } else if (usrNumber === ourLuckyNumber) {
+            resultPara.innerText = "Congratulation you are the winner";
+            resultPara.style.color = "green";
+          } else if (usrNumber < ourLuckyNumber) {
+            resultPara.innerText =
+              "Sorry entered number less than lucky number";
+            resultPara.style.color = "blue";
+          }
+        } else {
+          resultPara.innerText = "Wrong input number must be 1 - 10";
+        }
+
+        usrNumberInput.value = "";
+      });
+    </script>
+  </body>
+</html>
