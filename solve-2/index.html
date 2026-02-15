@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Data Track</title>
+  </head>
+  <body>
+    <input type="text" name="" id="text-data" />
+    <button id="display-text">Display Text</button>
+    <h3 class="text-show">Here Your Text</h3>
+
+    <script>
+      // (Input Data Tracking)
+
+      // তোমার আজকের টাস্ক:
+      // ১. একটি ইনপুট ফিল্ড (Input Field) থাকবে।
+      // ২. একটি বাটন থাকবে যার নাম "Display Text"।
+      // ৩. নিচে একটি খালি <h3> ট্যাগ থাকবে।
+      // ৪. কাজ: ইউজার ইনপুটে কিছু লিখে বাটনে ক্লিক করলে সেই লেখাটা <h3> ট্যাগের ভেতর দেখাবে।
+      // ৫. বোনাস: লেখাটা দেখানো হয়ে গেলে ইনপুট বক্সটা খালি (Clear) করে দিতে হবে।
+
+      const h3 = document.querySelector(".text-show");
+      const textInput = document.getElementById("text-data");
+      document
+        .getElementById("display-text")
+        .addEventListener("click", function () {
+          h3.innerText = textInput.value;
+          textInput.value=''
+        });
+    </script>
+  </body>
+</html>
