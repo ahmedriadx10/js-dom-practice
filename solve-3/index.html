@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter Master</title>
+  </head>
+
+  <style>
+    .container {
+      max-width: 300px;
+      height: 300px;
+
+      text-align: center;
+      border-radius: 8px;
+
+      box-shadow: 0 0 15px #ddd;
+      margin: 50px auto;
+
+      padding: 20px;
+    }
+
+    .container h2 {
+      font-size: 60px;
+      font-weight: bold;
+    }
+    .btn-container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .btn-one {
+      padding: 10px 20px;
+      border: none;
+      background-color: rgb(12, 90, 163);
+      font-weight: 600;
+      color: #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-two {
+      padding: 10px 20px;
+      border: none;
+      background-color: red;
+      font-weight: 600;
+      color: #ddd;
+      cursor: pointer;
+
+      border-radius: 8px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h2 id="count-show">0</h2>
+
+      <div class="btn-container">
+        <button id="increase-btn">Increase</button>
+        <button id="decrease-btn">Decrease</button>
+      </div>
+    </div>
+
+    <script>
+      const increaseBtn = document.getElementById("increase-btn");
+      const decreaseBtn = document.getElementById("decrease-btn");
+      increaseBtn.classList.add("btn-one");
+      decreaseBtn.classList.add("btn-two");
+      const countShow = document.getElementById("count-show");
+      let count = 0;
+
+      increaseBtn.addEventListener("click", function () {
+        count++;
+
+        countShow.innerText = count;
+      });
+
+      decreaseBtn.addEventListener("click", function () {
+      
+
+        if (count > 0) {
+            count -= 1;
+          countShow.innerText = count;
+        }
+      });
+    </script>
+  </body>
+</html>
