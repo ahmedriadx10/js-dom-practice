@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List With Prompt</title>
+  </head>
+
+  <style>
+    .fruits-container {
+      max-width: 700px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ddd;
+      padding: 20px;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      list-style: none;
+    }
+
+    li {
+      background-color: skyblue;
+      border-radius: 5px;
+      padding: 10px 12px;
+    }
+
+    input {
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: peru;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <!-- (Dynamic List Builder) -->
+
+    <div class="fruits-container">
+      <input
+        type="text"
+        name=""
+        id="usr-inp"
+        placeholder="Enter Your Fruits Name"
+      />
+      <button id="add-btn">Add to List</button>
+
+      <ul id="ul-data"></ul>
+    </div>
+
+    <script>
+      const userInput = document.getElementById("usr-inp");
+      const addBtn = document.getElementById("add-btn");
+      addBtn.classList.add("btn");
+      const ul = document.getElementById("ul-data");
+      const p = document.createElement("p");
+      p.style.color = "red";
+      p.style.fontStyle = "italic";
+      p.style.fontWeight = "600";
+      const parentDiv = document.querySelector(".fruits-container");
+      addBtn.addEventListener("click", function () {
+        let count = 0;
+        if (!userInput.value || userInput.value.trim() === "") {
+          p.innerText = "Empthy Fruits Name";
+
+          parentDiv.appendChild(p);
+        } else {
+          const li = document.createElement("li");
+          li.innerHTML = `
+         <span class='fruit-name'> ${userInput.value}</span><br>
+          <button class='delete-btn'>Delete</button>
+          <button class='fruit-edit'>Edit</button>
+          `;
+
+          ul.appendChild(li);
+          userInput.value = "";
+          p.innerText = "";
+        }
+      });
+
+      ul.addEventListener("click", function (event) {
+        if (event.target.classList.contains("delete-btn")) {
+          ul.removeChild(event.target.parentNode);
+        } else if (event.target.classList.contains("fruit-edit")) {
+          const getTargetParent = event.target.parentNode;
+          const parentFirstChild = getTargetParent.children[0];
+          if (parentFirstChild.classList.contains("fruit-name")) {
+            const runPrompt = prompt(parentFirstChild.innerText);
+            parentFirstChild.innerText = runPrompt;
+          }
+        }
+
+        event.stopPropagation();
+      });
+    </script>
+  </body>
+</html>
