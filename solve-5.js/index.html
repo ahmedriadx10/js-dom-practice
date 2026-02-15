@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List</title>
+  </head>
+
+  <style>
+    .fruits-container {
+      max-width: 700px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ddd;
+      padding: 20px;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      list-style: none;
+    }
+
+    li {
+      background-color: skyblue;
+      border-radius: 5px;
+      padding: 10px 12px;
+    }
+
+    input {
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: peru;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <!-- (Dynamic List Builder) -->
+
+    <div class="fruits-container">
+      <input
+        type="text"
+        name=""
+        id="usr-inp"
+        placeholder="Enter Your Fruits Name"
+      />
+      <button id="add-btn">Add to List</button>
+
+      <ul id="ul-data"></ul>
+    </div>
+
+    <!-- তোমার আজকের টাস্ক:
+একটি "Favorite Fruits List" মেকার বানাতে হবে।
+১. একটি ইনপুট বক্স থাকবে যেখানে ফলের নাম লেখা যাবে।
+২. একটি বাটন থাকবে "Add to List"।
+৩. নিচে একটি খালি <ul> ট্যাগ থাকবে।
+৪. কাজ: বাটনে ক্লিক করলে ইনপুটের লেখাটি একটি নতুন <li> ট্যাগ হয়ে ওই <ul> এর ভেতরে ঢুকে যাবে।
+৫. চ্যালেঞ্জ: যদি ইনপুট বক্স খালি থাকে এবং কেউ বাটনে ক্লিক করে, তবে যেন লিস্টে কিছু যোগ না হয় (একটি অ্যালার্ট দিতে পারো)। -->
+
+    <script>
+      const userInput = document.getElementById("usr-inp");
+      const addBtn = document.getElementById("add-btn");
+      const ul = document.getElementById("ul-data");
+      const p = document.createElement("p");
+      p.style.color = "red";
+      p.style.fontStyle = "italic";
+      p.style.fontWeight = "600";
+      const parentDiv = document.querySelector(".fruits-container");
+      addBtn.addEventListener("click", function () {
+        //used logical not operatior technique because we know empthy string is falsy
+        if (!userInput.value || userInput.value.trim()==='') {
+          p.innerText = "Empthy Fruits Name";
+
+          parentDiv.appendChild(p);
+        } else {
+          const li = document.createElement("li");
+
+          li.innerText = userInput.value;
+
+          ul.appendChild(li);
+          userInput.value = "";
+          p.innerText = "";
+        }
+      });
+    </script>
+  </body>
+</html>
