@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Picker</title>
+  </head>
+  <style>
+    #container {
+      max-width: 300px;
+      height: 300px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px auto;
+      box-shadow: 0 0 15px #ddd;
+    }
+    .color-pick-container {
+      text-align: center;
+    }
+    button {
+      padding: 12px 19px;
+      border-radius: 6px;
+      border: none;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px #ddd;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h2 id="show-hex-code">#FFFFFF</h2>
+    </div>
+
+    <div class="color-pick-container">
+      <input type="color" name="" id="color-inp" />
+      <button id="color-code-copy-btn">Copy Code</button>
+    </div>
+    <script>
+      const usrInputColor = document.getElementById("color-inp");
+      const h2 = document.getElementById("show-hex-code");
+      const mainContainer = document.getElementById("container");
+      const copyButton = document.getElementById("color-code-copy-btn");
+      usrInputColor.addEventListener("input", function () {
+        h2.innerText = usrInputColor.value;
+        mainContainer.style.backgroundColor = usrInputColor.value;
+        mainContainer.style.boxShadow = `0 0 15px ${usrInputColor.value}`;
+        copyButton.style.backgroundColor = usrInputColor.value;
+        copyButton.style.boxShadow = `0 0 10px ${usrInputColor.value}`;
+        copyButton.style.color = "white";
+      });
+
+      copyButton.addEventListener("click", function () {
+        navigator.clipboard.writeText(usrInputColor.value);
+        // used as a alternative setTimeout()
+        alert("Color Code Copied");
+      });
+    </script>
+  </body>
+</html>
