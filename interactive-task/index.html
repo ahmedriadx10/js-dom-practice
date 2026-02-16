@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Task Marker</title>
+  </head>
+
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      box-shadow: 0 0 15px purple;
+      max-width: 600px;
+      min-height: 300px;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 50px auto;
+    }
+
+    li {
+      list-style: none;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ddd;
+      margin: 10px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <input type="text" name="" id="usr-text" />
+      <button id="add-btn">Add Text</button>
+
+      <ul id="ul-data"></ul>
+    </div>
+
+    <script>
+      const ul = document.getElementById("ul-data");
+      const usrInputText = document.getElementById("usr-text");
+      const addButton = document.getElementById("add-btn");
+      addButton.addEventListener("click", function () {
+        if (!usrInputText.value || usrInputText.value.trim() === "") {
+          alert("You have enterd nothing");
+        } else {
+          const li = document.createElement("li");
+
+          li.innerText = usrInputText.value;
+          li.classList.add("item-click");
+
+          ul.appendChild(li);
+          usrInputText.value = "";
+        }
+      });
+
+      ul.addEventListener("click", function (event) {
+        if (event.target.classList.contains("item-click")) {
+          event.target.style.backgroundColor = "gray";
+          event.target.style.textDecoration = "line-through";
+          event.target.classList.add("done-click");
+          event.target.classList.remove("item-click");
+        } else if (event.target.classList.contains("done-click")) {
+          if (confirm()) {
+            ul.removeChild(event.target);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

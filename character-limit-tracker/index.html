@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charater Limit Tracker</title>
+
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #main-container {
+        box-shadow: 0 0 15px purple;
+        max-width: 600px;
+        min-height: 300px;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 50px auto;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        align-items: center;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+      textarea {
+        border-radius: 8px;
+        font-size: 18px;
+        font-style: italic;
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-container">
+      <textarea name="" id="usr-text" cols="50" rows="10"> </textarea>
+
+      <p id="count-remaing"></p>
+    </div>
+
+    <script>
+      const textArea = document.getElementById("usr-text");
+      const countPara = document.getElementById("count-remaing");
+
+      const maxNeedLetter = 50;
+      textArea.addEventListener("input", function () {
+        const convNumberTextAreaLetter = Number(textArea.value.length);
+        if (textArea.value === "") {
+          countPara.innerText = "Remaining: 50";
+        } else if (textArea.value.length > 0) {
+          if (textArea.value.length >= 50) {
+            countPara.innerText = "Limit Exteed";
+            countPara.style.color = "red";
+          } else {
+            countPara.innerText = `Remaining: ${maxNeedLetter - textArea.value.length}`;
+            countPara.style.color = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
