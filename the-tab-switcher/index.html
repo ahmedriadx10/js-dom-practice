@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Tab Switcher</title>
+  </head>
+  <style>
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
+  </style>
+
+  <body>
+    <button class="btn">Home</button>
+
+    <button class="btn">About</button>
+
+    <button class="btn">Contact</button>
+
+    <h2 id="state-show">Welcome to Home</h2>
+
+    <script>
+      const h2 = document.getElementById("state-show");
+
+      const allButton = document.querySelectorAll(".btn");
+
+      function tester() {
+        for (const x of allButton) {
+          x.style.backgroundColor = "purple";
+        }
+      }
+      tester();
+
+      allButton.forEach((b) => {
+        b.addEventListener("click", function () {
+          h2.innerText = `Welcome to ${b.innerText}`;
+          tester();
+          b.style.backgroundColor = "black";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Dynamic Filter</title>
+  </head>
+  <body>
+    <input type="search" name="" id="usr-search" />
+
+    <ul id="ul-data">
+      <li class="list-item">Apple</li>
+      <li class="list-item">Mango</li>
+      <li class="list-item">Plum</li>
+      <li class="list-item">Watermelon</li>
+      <li class="list-item">Lichi</li>
+      <li class="list-item">Cherry</li>
+      <li class="list-item">Strawberry</li>
+    </ul>
+
+    <script>
+      const ul = document.getElementById("ul-data");
+
+      const usrSearchInput = document.getElementById("usr-search");
+      usrSearchInput.addEventListener("input", function () {
+        for (const x of ul.children) {
+          const liLowerCase = x.innerText.toLowerCase();
+          if (liLowerCase.includes(usrSearchInput.value.toLowerCase())) {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
