@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Password</title>
+  </head>
+
+  <body>
+    <input type="password" name="" id="password-input" />
+    <button id="type-changer">Show</button>
+
+    <script>
+      const showBtn = document.getElementById("type-changer");
+      const userInpPassword = document.getElementById("password-input");
+      showBtn.style.cursor = "pointer";
+      showBtn.addEventListener("click", function () {
+        if (userInpPassword.type === "password") {
+          userInpPassword.setAttribute("type", "text");
+          showBtn.innerText = "Hide";
+        } else {
+          userInpPassword.setAttribute("type", "password");
+          showBtn.innerText = "show";
+        }
+      });
+    </script>
+  </body>
+</html>
