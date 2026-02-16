@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Text</title>
+  </head>
+  <body>
+    <h2 id="live-text">Your Text Here</h2>
+    <input type="text" name="" id="usr-text" />
+
+    <script>
+      const usrInput = document.getElementById("usr-text");
+
+      const h2 = document.getElementById("live-text");
+      usrInput.addEventListener("input", function () {
+        if (usrInput.value) {
+          h2.innerText = usrInput.value;
+        } else {
+          h2.innerText = "Your Text Here";
+        }
+      });
+    </script>
+  </body>
+</html>
