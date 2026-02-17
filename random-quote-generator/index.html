@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+  </head>
+
+  <style>
+    #quote-container {
+      max-width: 600px;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 50px auto;
+      box-shadow: 0 0 10px #ddd;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      background-color: chocolate;
+      color: white;
+      cursor: pointer;
+    }
+    .dark-container {
+      background-color: black;
+      color: white;
+    }
+  </style>
+  <body>
+    <div id="quote-container">
+      <h2 id="quote-text">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis
+        veritatis ullam quis quas unde similique quaerat iusto libero ut
+        consequatur!
+      </h2>
+      <p id="quote-writer">Unkown Writer</p>
+
+      <div id="quote-btn-container">
+        <button id="random-btn">New Quote</button>
+        <button id="dark-btn">Dark Mode</button>
+      </div>
+    </div>
+    <script>
+      const quotes = [
+        {
+          text: "Life is what happens when you're busy making other plans.",
+          author: "John Lennon",
+        },
+        {
+          text: "The way to get started is to quit talking and begin doing.",
+          author: "Walt Disney",
+        },
+        {
+          text: "Your time is limited, so don't waste it living someone else's life.",
+          author: "Steve Jobs",
+        },
+        {
+          text: "If life were predictable it would cease to be life, and be without flavor.",
+          author: "Eleanor Roosevelt",
+        },
+        {
+          text: "Spread love everywhere you go. Let no one ever come to you without leaving happier.",
+          author: "Mother Teresa",
+        },
+      ];
+      const qutoteLine = document.getElementById("quote-text");
+      const quoteWriter = document.getElementById("quote-writer");
+      const randomButton = document.getElementById("random-btn");
+      const quoteConainer = document.getElementById("quote-container");
+      randomButton.addEventListener("click", function () {
+        const quoteArrayLength = quotes.length;
+        //the random number will go total length-1 so always it can touch the last index
+        const getRandomIndex = parseInt(Math.random() * quoteArrayLength);
+
+        qutoteLine.innerText = `${quotes[getRandomIndex].text}`;
+        quoteWriter.innerText = `${quotes[getRandomIndex].author}`;
+      });
+
+      document
+        .getElementById("dark-btn")
+        .addEventListener("click", function () {
+          quoteConainer.classList.toggle("dark-container");
+          if (quoteConainer.classList.contains("dark-container")) {
+            document.getElementById("dark-btn").innerText = "Normal Mode";
+          } else {
+            document.getElementById("dark-btn").innerText = "Dark Mode";
+          }
+        });
+    </script>
+  </body>
+</html>
