@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Progress Bar</title>
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #progress-main-container {
+      max-width: 300px;
+      min-height: 100px;
+      box-shadow: 0 0 10px green;
+      border-radius: 12px;
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #progress-asign {
+      box-shadow: 0 0 2px green;
+      min-height: 8px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #progress-track {
+      width: 0%;
+      height: 8px;
+      border-radius: 10px;
+      background-color: green;
+    }
+    .button-container {
+      text-align: center;
+    }
+    #progress-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="progress-main-container">
+      <div id="progress-asign">
+        <div id="progress-track"></div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button id="progress-btn">Fill Progress</button>
+    </div>
+
+    <script>
+      const progressButton = document.getElementById("progress-btn");
+      const progressTrack = document.getElementById("progress-track");
+      let count = 0;
+      progressButton.addEventListener("click", function () {
+        count += 10;
+        if (count === 100) {
+          progressButton.innerText = "Progress Filled";
+          progressButton.setAttribute("disabled", true);
+          progressButton.style.backgroundColor = "rgba(0, 128, 0, 0.493)";
+        }
+        progressTrack.style.width = `${count}%`;
+      });
+    </script>
+  </body>
+</html>
