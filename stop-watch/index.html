@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Time</title>
+  </head>
+
+  <style>
+    .clock-container {
+      width: 300px;
+      height: 300px;
+      box-shadow: 0 0 15px purple;
+      border-radius: 50%;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    
+    }
+    h2 {
+      font-size: 50px;
+      letter-spacing: 5px;
+      font-weight: bold;
+      color: purple;
+    }
+
+    button{
+      padding: 12px 25px;
+border: none;
+border-radius: 6px;
+background-color: purple;
+color: #fff;
+font-weight: 600;
+cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div class="clock-container">
+      <h2 id="clock-time"><span>0</span> : <span>00</span></h2>
+      <button id="start-btn">Start</button>
+    </div>
+
+    <script>
+      const timeShow = document.getElementById("clock-time");
+
+      const stopPoint = 5 * 60;
+      let count = 0;
+      let showSecond = 0;
+      let showMinute = 0;
+      const minute = timeShow.children[0];
+      const second = timeShow.children[1];
+      const startBtn = document.getElementById("start-btn");
+
+      startBtn.addEventListener("click", function () {
+        const trackTime = setInterval(() => {
+          count++;
+          showSecond++;
+          if (showSecond === 60) {
+            showSecond = 1;
+            showMinute++;
+            minute.innerText = showMinute;
+          }
+          second.innerText = showSecond;
+          if (count === stopPoint) {
+            clearInterval(trackTime);
+              if ((startBtn.innerText === "Again")) {
+          startBtn.innerText = "Start";
+          startBtn.style.display='inline-block'
+          console.log('ok')
+        } else {
+          startBtn.innerText = "Again";
+          startBtn.style.display='inline-block'
+        }
+            second.innerText = "00";
+          }
+        }, 1000);
+         count = 0;
+         showSecond = 0;
+         showMinute = 0;
+minute.innerText=0
+startBtn.style.display='none'
+    
+      });
+    </script>
+  </body>
+</html>
