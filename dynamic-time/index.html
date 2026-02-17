@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Time</title>
+  </head>
+
+  <style>
+    .clock-container {
+      width: 300px;
+      height: 300px;
+      box-shadow: 0 0 20px #ddd;
+      border-radius: 50%;
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      font-size: 30px;
+      letter-spacing: 5px;
+      font-weight: bold;
+    }
+  </style>
+
+  <body>
+    <div class="clock-container">
+      <h2 id="clock-time"></h2>
+    </div>
+
+    <script>
+      setInterval(() => {
+        const presentData = new Date();
+        //explored from google how can i convet 12 hours time format
+        //this is
+        const timeNow = new Intl.DateTimeFormat("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+          hour12: true,
+        }).format(presentData);
+        document.getElementById("clock-time").innerText = timeNow;
+      }, 1000);
+    </script>
+  </body>
+</html>
