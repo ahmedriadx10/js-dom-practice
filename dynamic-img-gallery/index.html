@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Image Gallery</title>
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #container {
+      max-width: 600px;
+      min-height: 400px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px aqua;
+      padding: 10px;
+    }
+
+    img {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+    }
+
+    #button-container {
+      margin: 10px 0;
+    }
+    button {
+      padding: 12px 25px;
+      border: none;
+      margin-right: 10px;
+      border-radius: 5px;
+      font-weight: 600;
+      color: white;
+      background-color: rgb(10, 98, 199);
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div id="container">
+      <div class="img-container">
+        <img
+          src="https://images.pexels.com/photos/17981965/pexels-photo-17981965.png"
+          alt=""
+          id="img"
+        />
+      </div>
+
+      <div id="button-container">
+        <button class="btn nature-btn">Nature</button>
+        <button class="btn city-btn">City</button>
+        <button class="btn animals-btn">Animals</button>
+      </div>
+    </div>
+
+    <script>
+      const gallery = {
+        nature:
+          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500",
+        city: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500",
+        animals:
+          "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=500",
+      };
+      const img = document.getElementById("img");
+      const buttonContainer = document.getElementById("button-container");
+
+      buttonContainer.addEventListener("click", function (event) {
+        const targetElement = event.target;
+        if (targetElement.classList.contains("btn")) {
+          if (targetElement.classList.contains("nature-btn")) {
+            img.setAttribute("src", gallery.nature);
+          } else if (targetElement.classList.contains("city-btn")) {
+            img.setAttribute("src", gallery.city);
+          } else if (targetElement.classList.contains("animals-btn")) {
+            img.setAttribute("src", gallery.animals);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
