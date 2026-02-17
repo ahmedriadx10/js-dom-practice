@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Budget Tracker</title>
+  </head>
+  <body>
+    <h2 id="cost-show">Total:0</h2>
+    <input type="text" name="" id="usr-cost-name" />
+    <input type="number" name="" id="usr-price" />
+    <button id="add-btn">Add Expense</button>
+    <ul id="list-data"></ul>
+
+    <script>
+      const usrCostName = document.getElementById("usr-cost-name");
+      const usrCostPrice = document.getElementById("usr-price");
+      const addButton = document.getElementById("add-btn");
+      const costShow = document.getElementById("cost-show");
+      const ulData = document.getElementById("list-data");
+      let costCalculate = 0;
+
+      addButton.addEventListener("click", function () {
+        const li = document.createElement("li");
+
+        li.innerHTML = `${usrCostName.value} price:<span> ${usrCostPrice.value} </span><button class='delete-btn'>Delete</button>`;
+        li.style.listStyle = "none";
+
+        const convNumberPrice = Number(usrCostPrice.value);
+        costCalculate += convNumberPrice;
+        costShow.innerText = `Total: ${costCalculate}`;
+        ulData.appendChild(li);
+        usrCostName.value = "";
+        usrCostPrice.value = "";
+      });
+      ulData.addEventListener("click", function (event) {
+        const targetElement = event.target;
+        if (targetElement.classList.contains("delete-btn")) {
+      if(confirm('Do You Wanna Remove Item ?')){
+            ulData.removeChild(targetElement.parentNode);
+          //user convert number special technique
+          const convNumberCostPrice =
+            +targetElement.previousElementSibling.innerText;
+
+          costCalculate -= convNumberCostPrice;
+
+          costShow.innerText = `Total: ${costCalculate}`;
+      }
+        }
+      });
+    </script>
+  </body>
+</html>
