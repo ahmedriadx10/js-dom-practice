@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Magic</title>
+  </head>
+
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #mouse-container {
+      max-width: 500px;
+      min-height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px purple;
+      margin: 50px auto;
+      position: relative;
+    }
+    #circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: purple;
+      position: absolute;
+      box-shadow: 0 0 10px purple;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <body>
+    <div id="mouse-container">
+      <div id="circle"></div>
+    </div>
+
+    <script>
+      const mousrContainer = document.getElementById("mouse-container");
+      const circle = document.getElementById("circle");
+      mousrContainer.addEventListener("mousemove", function (event) {
+        console.log(event.offsetX);
+        console.log(event.offsetY);
+
+        circle.style.top = `${event.offsetY}px`;
+        circle.style.left = `${event.offsetX}px`;
+      });
+    </script>
+  </body>
+</html>
